@@ -26,8 +26,13 @@ buttons.forEach(button => {
                 break;
             case '%':
                 // Calculate the percentage of the current input value
-                const currentValue = parseFloat(inputField.value);
-                inputField.value = (currentValue / 100).toString();
+                try {
+                    const currentValue = parseFloat(inputField.value);
+                    const result = currentValue / 100;
+                    inputField.value = result.toString();
+                } catch (error) {
+                    inputField.value = 'Error';
+                }
                 break;
             default:
                 // Append the clicked button value to the input field
